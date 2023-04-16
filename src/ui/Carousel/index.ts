@@ -1,5 +1,3 @@
-import React from "react";
-
-export const Carousel: FC = () => {
-  return <div></div>;
-};
+export { Carousel } from "./Carousel";
+export { CarouselItem } from "./CarouselItem";
+export { CarouselPagination } from "./CarouselPagination";

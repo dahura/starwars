@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "deploy": "vercel deploy",
     "vercel": "vercel dev --listen 5000",
     "dev:edge": "concurrently \"vite\" \"vercel dev --port 3001 --yes\"",
     "build": "tsc && vite build",
