@@ -1,20 +1,24 @@
 import { FC } from "react";
 import LayoutBase from "./_layout";
 import { useGetAllQuery, useGetStarwarsPersonQuery } from "../api/starWarsApi";
-import { Card } from "../ui/Card/Card";
-import { ArtBoard } from "../ui/ArtBoard/ArtBoard";
-import { Carousel } from "../ui/Carousel/Carousel";
-import { CarouselItem } from "../ui/Carousel/CarouselItem";
-import { CarouselPagination } from "../ui/Carousel/CarouselPagination";
-import { SearchInput } from "../ui/SearchInput/SearchInput";
-import { LoadingScreen } from "../ui/LoadingScreen";
+import { Card } from "../components/Card/Card";
+import { ArtBoard } from "../components/ArtBoard/ArtBoard";
+import { Carousel } from "../components/Carousel/Carousel";
+import { CarouselItem } from "../components/Carousel/CarouselItem";
+import { CarouselPagination } from "../components/Carousel/CarouselPagination";
+import { SearchInput } from "../components/SearchInput/SearchInput";
+import { LoadingScreen } from "../components/LoadingScreen";
+import { useCharacters } from "../store/hooks/useCharacters";
+import { ErrorScreen } from "../components/ErrorScreen/ErrorScreen";
 
 const MainPage: FC = () => {
-  const { data, isError, isFetching, isLoading, isSuccess } =
-    useGetAllQuery(null);
-  if (isError) return <div> error !</div>;
+  const { data, isError, isLoading, isSuccess } = useCharacters();
+
+  if (isError) return <ErrorScreen />;
   if (isLoading) return <LoadingScreen />;
-  if (isSuccess && data?.results)
+  if (isSuccess && data?.results) {
+    const ids = data.results.map(({ name }) => name);
+
     return (
       <LayoutBase>
         <ArtBoard>
@@ -27,9 +31,12 @@ const MainPage: FC = () => {
               <CarouselItem id={person.name} {...person} key={person.name} />
             ))}
           </Carousel>
+          <CarouselPagination ids={ids} />
         </ArtBoard>
       </LayoutBase>
     );
+  }
+
   return <></>;
 };
 

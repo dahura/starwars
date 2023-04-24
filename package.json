@@ -9,9 +9,7 @@
     "vercel": "vercel dev --listen 5000",
     "dev:edge": "concurrently \"vite\" \"vercel dev --port 3001 --yes\"",
     "build": "tsc && vite build",
-    "preview": "vite preview",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@types/classnames": "^2.3.1",
@@ -21,6 +19,7 @@
     "generouted": "^1.12.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.9",
     "react-location": "^3.3.4",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.10.0",

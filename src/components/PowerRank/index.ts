@@ -1,0 +1,1 @@
+export { PowerRank } from "./PowerRank";

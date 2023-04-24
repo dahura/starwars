@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from "react";
-import { LoadingScreen } from "../ui/LoadingScreen";
+import { LoadingScreen } from "../components/LoadingScreen";
 
 interface Layout {
   children: ReactNode;
