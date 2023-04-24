@@ -22,7 +22,7 @@ export default defineConfig({
         name: "starwars",
         short_name: "sw",
         description: "Starwars wiki",
-        theme_color: "#ffffff",
+        theme_color: "#000000",
         start_url: "/",
         icons: [
           {
